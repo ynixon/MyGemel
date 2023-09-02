@@ -11,6 +11,10 @@ The Best Investment Suggester is a Streamlit app that provides users with the be
 - Calculates the total ROI for each option based on the mentioned periods.
 - Provides a link to the original webpage as the data source.
 
+## Try It Online
+
+Access the Best Investment Suggester app online: [https://mygemel.streamlit.app/](https://mygemel.streamlit.app/)
+
 ## Installation
 
 1. Clone the repository:
