@@ -3,9 +3,19 @@ import requests
 import pandas as pd
 import streamlit as st
 
+st.set_page_config(
+    layout="wide",
+    page_title="Investment Performance Dashboard",
+    page_icon="💰"
+)
+
+# Sidebar
+st.sidebar.title("Options")
+st.sidebar.info("Filters and options will appear here.")
+
 # Streamlit UI Customizations
-st.title('Best Investment Suggester')
-st.markdown('### 📈 Get the best investment options across categories!')
+st.title('Investment Performance Dashboard')
+st.markdown('### 📈 Comparing Top Investment Options Across Categories')
 st.markdown('---')
 
 # Fetching and Parsing Data
@@ -75,10 +85,24 @@ for col in ['1 Year ROI', '3 Years ROI', '5 Years ROI', 'Total ROI']:
 if 'selected_category' not in st.session_state:
     st.session_state.selected_category = ""
 
+# Define styling function for ROI values
+def get_roi_color(val):
+    if isinstance(val, str) and '%' in val:
+        try:
+            num_val = float(val.strip('%'))
+            if num_val > 0:
+                return 'color: green'
+            elif num_val < 0:
+                return 'color: red'
+        except ValueError:
+            return ''  # Return empty string if conversion fails
+    return ''
+
 # Create top section with summary table
 st.subheader('Summary Table')
-st.table(final_df_sorted)
+st.dataframe(final_df_sorted.style.applymap(get_roi_color, subset=['1 Year ROI', '3 Years ROI', '5 Years ROI', 'Total ROI']))
 
+st.markdown("---")
 # Create a link to the original webpage as the source
 st.markdown("Source: [MyGemel.net](https://www.mygemel.net/קופת-גמל-להשקעה)")
 
