@@ -6,14 +6,7 @@ import streamlit as st
 st.set_page_config(
     page_title="Best Investment Suggester",
     layout="wide",
-    initial_sidebar_state="collapsed",
-    theme={
-        "primaryColor": "#0068C9",  # A nice blue
-        "backgroundColor": "#FFFFFF", # White background
-        "secondaryBackgroundColor": "#F0F2F6", # Light grey for elements like sidebar
-        "textColor": "#262730", # Dark text
-        "font": "sans serif"
-    }
+    initial_sidebar_state="collapsed"
 )
 
 # Streamlit UI Customizations
