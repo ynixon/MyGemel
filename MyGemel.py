@@ -3,9 +3,22 @@ import requests
 import pandas as pd
 import streamlit as st
 
+st.set_page_config(
+    page_title="Best Investment Suggester",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+    theme={
+        "primaryColor": "#0068C9",  # A nice blue
+        "backgroundColor": "#FFFFFF", # White background
+        "secondaryBackgroundColor": "#F0F2F6", # Light grey for elements like sidebar
+        "textColor": "#262730", # Dark text
+        "font": "sans serif"
+    }
+)
+
 # Streamlit UI Customizations
 st.title('Best Investment Suggester')
-st.markdown('### 📈 Get the best investment options across categories!')
+st.subheader('📈 Get the best investment options across categories!')
 st.markdown('---')
 
 # Fetching and Parsing Data
@@ -77,7 +90,7 @@ if 'selected_category' not in st.session_state:
 
 # Create top section with summary table
 st.subheader('Summary Table')
-st.table(final_df_sorted)
+st.dataframe(final_df_sorted)
 
 # Create a link to the original webpage as the source
 st.markdown("Source: [MyGemel.net](https://www.mygemel.net/קופת-גמל-להשקעה)")
